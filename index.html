@@ -1,0 +1,88 @@
+<html>
+    <body>
+        <div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h1>Will you be my valentine?</h1>
+            <img id="valentineImage" src="https://cdn.discordapp.com/attachments/831773088659931199/1335276858782253157/image0.jpg?ex=679f94fb&is=679e437b&hm=5ddab752a62aa156d793b449246bd715b683c78a15a49b5bfea339e8f7d6a9be&" alt="Valentine's Day Image" style="max-width: 300px; height: auto;">
+            <br/>
+            <br/>
+            <br/>
+            <button id="yesButton">Yes</button>
+            <button id="no">No</button>
+        </div>
+
+        <style>
+            body {
+                background: linear-gradient(to bottom, #f5cac3, #f7ede2);
+            }
+            div {
+                text-align: center;
+                vertical-align: middle;
+            }
+            h1 {
+                color: #ff477e;
+            }
+            #yesButton {
+                background-color: #06d6a0;
+                transition: transform 0.3s;
+                margin-right: 10px;
+                width: 120px;
+                font-size: 30px;
+                height: 40px;
+                color: #fff;
+                margin-left: -140px;
+            }
+            #no {
+                position: absolute;
+                background-color: #ef476f;
+                transition: transform 0.3s;
+                margin-left: 10px;
+                width: 120px;
+                /* font-size: 30px; */
+                height: 40px;
+                color: #fff;
+            }
+        </style>
+        <script>
+            document.getElementById("yesButton").addEventListener("click", showAlert);
+
+            function showAlert() {
+                alert("Ziky pani see u soon!! Love u smradochu");
+            }
+
+            var yesButton = document.getElementById("yesButton");
+            var no = document.getElementById("no");
+            var valentineImage = document.getElementById("valentineImage");
+
+            var noTexts = ["a jakoze jses si jista jo?", "pani prosim", "nebudte takova ne", "more prosim", "nech toho", "more staci", "nebud trapna"];
+            var imageSources 
+            = ["https://cdn.discordapp.com/attachments/831773088659931199/1335281304794824766/IMG_3771.jpg?ex=679f991f&is=679e479f&hm=bac9262eb8987b58c41a7be8d3224864c31d517a7d16c91dd8b45fbe26a03dac&", "https://cdn.discordapp.com/attachments/831773088659931199/1335281469290971199/IMG_3057.jpg?ex=679f9946&is=679e47c6&hm=ff2e343e6c7ccf5ca2235571a7f0ad55c8b448cb089d965170bf6ec0c664f6cb&", "https://cdn.discordapp.com/attachments/831773088659931199/1335281932564434964/IMG_4047.png?ex=679f99b5&is=679e4835&hm=1b616b81d159dca3d51a801218e5c09237e6773b6f07903d8eba4736f00eb7fd&", "https://cdn.discordapp.com/attachments/831773088659931199/1335282072264376371/image0.jpg?ex=679f99d6&is=679e4856&hm=07bc327a3f8c02dca0bdcf6ddfe467ed02b84e5c9e2562bac54459736dc0b610&"];
+
+            no.addEventListener("click", change);
+
+            function change() {
+                var randomIndex = Math.floor(Math.random() * noTexts.length);
+                var randomText = noTexts[randomIndex];
+                no.innerText = randomText;
+
+                var i = Math.floor(Math.random() * 1000) + 1;
+                var j = Math.floor(Math.random() * 700) + 1;
+                no.style.left = i + "px";
+                no.style.top = j + "px";
+
+                var currentWidth = yesButton.offsetWidth;
+                var currentHeight = yesButton.offsetHeight
+                yesButton.style.width = currentWidth + 50 + "px";
+                yesButton.style.height = currentHeight + 10 + "px";
+
+                var randomImageIndex = Math.floor(Math.random() * imageSources.length);
+                valentineImage.src = imageSources[randomImageIndex];
+            }
+        </script>
+    </body>
+</html>
