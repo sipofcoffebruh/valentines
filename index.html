@@ -12,8 +12,9 @@
             <br/>
             <br/>
             <br/>
-            <button id="yesButton">Yes</button>
+            <button id="yes">Yes</button>
             <button id="no">No</button>
+            <p id="message" style="display: none; font-size: 20px; color: #ff477e; text-align: center;"></p>
         </div>
 
         <style>
@@ -27,12 +28,12 @@
             h1 {
                 color: #ff477e;
             }
-            #yesButton {
+            #yes {
                 background-color: #06d6a0;
                 transition: transform 0.3s;
                 margin-right: 10px;
                 width: 120px;
-                font-size: 30px;
+                font-size: 15px;
                 height: 40px;
                 color: #fff;
                 margin-left: -140px;
@@ -43,29 +44,38 @@
                 transition: transform 0.3s;
                 margin-left: 10px;
                 width: 120px;
-                /* font-size: 30px; */
+                font-size: 10px;
                 height: 40px;
                 color: #fff;
             }
         </style>
         <script>
-            document.getElementById("yesButton").addEventListener("click", showAlert);
+            document.getElementById("yes").addEventListener("click", yeschange);
 
-            function showAlert() {
-                alert("Zikyyy pani see u soon!! Love u smradochu");
+            function yeschange() {
+                // Hide buttons
+                document.getElementById("yes").style.display = "none";
+                document.getElementById("no").style.display = "none";
+                
+                // Change image
+                document.getElementById("valentineImage").src = "yesimg.png";
+
+                // Display message
+                var message = document.getElementById("message");
+                message.innerText = "Zikyyy pani see u soon!! Love u smradochu!!<3";
+                message.style.display = "block";
             }
 
-            var yesButton = document.getElementById("yesButton");
+            var yes = document.getElementById("yes");
             var no = document.getElementById("no");
             var valentineImage = document.getElementById("valentineImage");
 
             var noTexts = ["a jakoze jses si jista jo?", "pani prosim", "nebudte takova ne", "nech toho", "more staci", "nebud trapna"];
-            var imageSources 
-            = ["img1.png","img2.png","img3.png","img4.png","img5.png"];
+            var imageSources = ["img1.png", "img2.png", "img3.png", "img4.png", "img5.png"];
 
-            no.addEventListener("click", change);
+            no.addEventListener("click", nochange);
 
-            function change() {
+            function nochange() {
                 var randomIndex = Math.floor(Math.random() * noTexts.length);
                 var randomText = noTexts[randomIndex];
                 no.innerText = randomText;
@@ -75,14 +85,18 @@
                 no.style.left = i + "px";
                 no.style.top = j + "px";
 
-                var currentWidth = yesButton.offsetWidth;
-                var currentHeight = yesButton.offsetHeight
-                yesButton.style.width = currentWidth + 100 + "px";
-                yesButton.style.height = currentHeight + 50 + "px";
+                // Increase "Yes" button size
+                var currentWidth = yes.offsetWidth;
+                var currentHeight = yes.offsetHeight;
+                var currentFontSize = parseFloat(window.getComputedStyle(yes).fontSize);
+
+                yes.style.width = currentWidth + 100 + "px";
+                yes.style.height = currentHeight + 50 + "px";
+                yes.style.fontSize = (currentFontSize + 10) + "px"; 
 
                 var randomImageIndex = Math.floor(Math.random() * imageSources.length);
                 valentineImage.src = imageSources[randomImageIndex];
-            }
+            }   
         </script>
     </body>
 </html>
